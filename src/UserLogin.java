@@ -81,8 +81,8 @@ public class UserLogin extends JFrame {
                 String userName = textField.getText();
                 String password = passwordField.getText();
                 try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tic-tac-toe",
-                            "root", "password");
+                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe",
+                            "admin", "group8final");
 
                     PreparedStatement st = (PreparedStatement) connection
                             .prepareStatement("Select name, password from userinfo where name=? and password=?");
