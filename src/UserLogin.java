@@ -3,11 +3,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,6 +20,9 @@ public class UserLogin extends JFrame {
     private JTextField textField;
     private JPasswordField passwordField;
     private JButton btnNewButton;
+    private JButton signUpButton;
+    private JButton guestButton;
+    private JButton quitButton;
     private JLabel label;
     private JPanel contentPane;
 
@@ -74,15 +73,15 @@ public class UserLogin extends JFrame {
 
         btnNewButton = new JButton("Login");
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
-        btnNewButton.setBounds(450, 392, 162, 73);
+        btnNewButton.setBounds(450, 392, 180, 73);
         btnNewButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 String userName = textField.getText();
                 String password = passwordField.getText();
                 try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe",
-                            "admin", "group8final");
+                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tic-tac-toe",
+                            "root", "password");
 
                     PreparedStatement st = (PreparedStatement) connection
                             .prepareStatement("Select name, password from userinfo where name=? and password=?");
@@ -92,12 +91,7 @@ public class UserLogin extends JFrame {
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
                         dispose();
-                        /*
-                        UserHome ah = new UserHome(userName);
-                        ah.setTitle("Welcome");
-                        ah.setVisible(true);
 
-                         */
                         JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
                     } else {
                         JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
@@ -110,8 +104,87 @@ public class UserLogin extends JFrame {
 
         contentPane.add(btnNewButton);
 
+        /**
+        Create new account
+        */
+        signUpButton = new JButton("New Account");
+        signUpButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+        signUpButton.setBounds(720, 392, 180, 73);
+  /*      signUpButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                String userName = textField.getText();
+                String password = passwordField.getText();
+                try {
+                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tic-tac-toe",
+                            "root", "password");
+
+                    PreparedStatement st = (PreparedStatement) connection
+                            .prepareStatement("Select name, password from userinfo where name=? and password=?");
+
+                    st.setString(1, userName);
+                    st.setString(2, password);
+                    ResultSet rs = st.executeQuery();
+                    if (rs.next()) {
+                        dispose();
+
+                        JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
+                    } else {
+                        JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
+                    }
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                }
+            }
+
+
+        });
+
+   */
+
+        contentPane.add(signUpButton);
+
+        /**
+         Play as a guest
+         */
+       guestButton = new JButton("Guest");
+        guestButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+       guestButton.setBounds(150, 392, 180, 73);
+        guestButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                new GuestGame("Guest");
+
+            }
+
+
+
+        });
+        contentPane.add(guestButton);
+
+
+        /**
+         Quit application
+         */
+        quitButton = new JButton("Exit");
+        quitButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+        quitButton.setBounds(400, 480, 300, 73);
+        quitButton.setForeground(Color.RED);
+        quitButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        contentPane.add(quitButton);
+
+
+/*
         label = new JLabel("");
         label.setBounds(0, 0, 1008, 562);
         contentPane.add(label);
+*/
+
     }
 }
