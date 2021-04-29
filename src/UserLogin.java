@@ -93,6 +93,12 @@ public class UserLogin extends JFrame {
                         dispose();
 
                         JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
+			
+			/**
+			* Start game after login successful
+			*/
+			new GameStart();
+			    
                     } else {
                         JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
                     }
