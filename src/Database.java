@@ -14,8 +14,8 @@ public class Database {
 		try {
 			Class.forName(driver);
 			conn = DriverManager
-					.getConnection("jdbc:mysql://localhost/tic-tac-toe?"
-							+ "user=root&password=password");
+					.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe?"
+							+ "user=admin&password=group8final");
 			System.out.println("Succeeded connecting to the Database!");
 		} catch (Exception e) {
 			System.out.println("Failed to the Database!");
