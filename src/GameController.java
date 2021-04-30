@@ -25,10 +25,11 @@ public class GameController implements ActionListener, Runnable{
 	private boolean waiting = true;
 	private char otherplayer;
 	private char winner=' ';
+	private int userID;
 	
 
-	public GameController(String name){
-
+	public GameController(int userID, String name){
+		this.userID = userID;
 		board = new Board();
 		endOptionPanel = new EndOptionPanel();
 		player = new Player();	
@@ -50,9 +51,9 @@ public class GameController implements ActionListener, Runnable{
 				if(board.getPlayerNameButton().getText().equals("")==false){
 					PlayerInfoPanel pi = new PlayerInfoPanel();
 					pi.addName(player.getName());
-					pi.addWins(db.getWins(player.getName()));
-					pi.addLoses(db.getLoses(player.getName()));
-					pi.addTies(db.getTies(player.getName()));
+					pi.addWins(db.getWins(userID));
+					pi.addLoses(db.getLoses(userID));
+					pi.addTies(db.getTies(userID));
 				}
 			}
 		});
@@ -134,14 +135,14 @@ public class GameController implements ActionListener, Runnable{
 					}
 					if (judger.getWinner() == player.getRole()){
 						endOptionPanel.setResult("You win!");
-						db.updateWins(player.getName());
+						db.updateWins(userID);
 					}
 					else if (judger.getWinner() == 't'){
 						endOptionPanel.setResult("It's a tie!");
-						db.updateTies(player.getName());
+						db.updateTies(userID);
 					}else {
 						endOptionPanel.setResult("You lose!");
-						db.updateLoses(player.getName());
+						db.updateLoses(userID);
 						}
 					waiting = true;
 					myTurn = false;
@@ -219,14 +220,14 @@ public class GameController implements ActionListener, Runnable{
 					}
 					if (winner == player.getRole()){
 						endOptionPanel.setResult("You win!");
-						db.updateWins(player.getName());
+						db.updateWins(userID);
 					}
 					else if (winner == 't'){
 						endOptionPanel.setResult("It's a tie!");
-						db.updateTies(player.getName());
+						db.updateTies(userID);
 					}else {
 						endOptionPanel.setResult("You lose!");
-						db.updateLoses(player.getName());
+						db.updateLoses(userID);
 					}
 					waiting = true;
 					myTurn = false;
@@ -372,6 +373,6 @@ public class GameController implements ActionListener, Runnable{
 	}
 	
 	public static void main(String arg[]){
-		new GameController("test1");
+		new GameController(2,"test1");
 	}
 }

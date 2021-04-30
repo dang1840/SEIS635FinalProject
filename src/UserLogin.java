@@ -28,6 +28,7 @@ public class UserLogin extends JFrame {
 
 
 
+
     /**
      * Create the frame.
      */
@@ -80,25 +81,21 @@ public class UserLogin extends JFrame {
                 String userName = textField.getText();
                 String password = passwordField.getText();
                 try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe?"
-							+ "user=admin&password=group8final");
+                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tic-tac-toe?"
+                            + "user=root&password=password");
 
                     PreparedStatement st = (PreparedStatement) connection
-                            .prepareStatement("Select name, password from userinfo where name=? and password=?");
+                            .prepareStatement("Select username, password from infotable where username=? and password=?");
 
                     st.setString(1, userName);
                     st.setString(2, password);
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
                         dispose();
-
                         JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
-			
-			/**
-			* Start game after login successful
-			*/
-			new GameStart();
-			    
+
+                        new GameStart(userName, password);
+
                     } else {
                         JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
                     }
@@ -116,37 +113,24 @@ public class UserLogin extends JFrame {
         signUpButton = new JButton("New Account");
         signUpButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
         signUpButton.setBounds(720, 392, 180, 73);
-  /*      signUpButton.addActionListener(new ActionListener() {
+        signUpButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                String userName = textField.getText();
-                String password = passwordField.getText();
-                try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tic-tac-toe",
-                            "root", "password");
-
-                    PreparedStatement st = (PreparedStatement) connection
-                            .prepareStatement("Select name, password from userinfo where name=? and password=?");
-
-                    st.setString(1, userName);
-                    st.setString(2, password);
-                    ResultSet rs = st.executeQuery();
-                    if (rs.next()) {
-                        dispose();
-
-                        JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
-                    } else {
-                        JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
+                EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        try {
+                            CreateNewUser frame = new CreateNewUser();
+                            frame.setVisible(true);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                } catch (SQLException sqlException) {
-                    sqlException.printStackTrace();
-                }
+                });
             }
-
 
         });
 
-   */
+
 
         contentPane.add(signUpButton);
 
@@ -186,11 +170,10 @@ public class UserLogin extends JFrame {
         contentPane.add(quitButton);
 
 
-/*
-        label = new JLabel("");
-        label.setBounds(0, 0, 1008, 562);
-        contentPane.add(label);
-*/
+
 
     }
+
+
+
 }

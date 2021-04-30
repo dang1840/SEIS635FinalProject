@@ -15,8 +15,10 @@ public class LocalGame implements ActionListener, Runnable{
 	private int columnSelected;
 	private boolean myTurn = false;
 	private boolean waiting = true;
+	private int userID;
 	
-	public LocalGame(String name){
+	public LocalGame(int userID, String name){
+		this.userID = userID;
 		board = new Board();
 		endOptionPanel = new EndOptionPanel();
 		player = new Player();	
@@ -27,7 +29,8 @@ public class LocalGame implements ActionListener, Runnable{
 		db.connect();
 		player.setName(name);
 		board.setMyName(name);
-		board.setOpponentName(ai.getName());
+
+		board.setOpponentName("AI");
 		for (int i=0;i<3;i++){   //add listener to cells
 			for (int j=0;j<3;j++){
 				board.getCell()[i][j].addActionListener(this);
@@ -41,9 +44,9 @@ public class LocalGame implements ActionListener, Runnable{
 				if(board.getPlayerNameButton().getText().equals("")==false){
 					PlayerInfoPanel pi = new PlayerInfoPanel();
 					pi.addName(player.getName());
-					pi.addWins(db.getWins(player.getName()));
-					pi.addLoses(db.getLoses(player.getName()));
-					pi.addTies(db.getTies(player.getName()));
+					pi.addWins(db.getWins(userID));
+					pi.addLoses(db.getLoses(userID));
+					pi.addTies(db.getTies(userID));
 				}
 			}
 		});
@@ -53,10 +56,10 @@ public class LocalGame implements ActionListener, Runnable{
 				// TODO Auto-generated method stub
 				if(board.getPlayerNameButton().getText().equals("")==false){
 					PlayerInfoPanel pi = new PlayerInfoPanel();
-					pi.addName(ai.getName());
-					pi.addWins(db.getWins(ai.getName()));
-					pi.addLoses(db.getLoses(ai.getName()));
-					pi.addTies(db.getTies(ai.getName()));
+					pi.addName("AI");
+					pi.addWins(db.getWins(1));
+					pi.addLoses(db.getLoses(1));
+					pi.addTies(db.getTies(1));
 				}
 			}
 		});
@@ -113,17 +116,17 @@ public class LocalGame implements ActionListener, Runnable{
 				}
 				if (judger.getWinner() == player.getRole()){
 					endOptionPanel.setResult("You win!");
-					db.updateWins(player.getName());
-					db.updateLoses(ai.getName());
+					db.updateWins(userID);
+					db.updateLoses(1);
 				}
 				else if (judger.getWinner() == 't'){
 					endOptionPanel.setResult("It's a tie!");
-					db.updateTies(player.getName());
-					db.updateTies(ai.getName());
+					db.updateTies(userID);
+					db.updateTies(1);
 				}else {
 					endOptionPanel.setResult("You lose!");
-					db.updateLoses(player.getName());
-					db.updateWins(ai.getName());
+					db.updateLoses(userID);
+					db.updateWins(1);
 					}
 				waiting = true;
 				myTurn = false;
@@ -198,6 +201,6 @@ public class LocalGame implements ActionListener, Runnable{
 	}
 	
 	public static void main(String arg[]){
-		new LocalGame("test");
+		new LocalGame(2,"Dan");
 	}
 }
