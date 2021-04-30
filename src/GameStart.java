@@ -1,6 +1,8 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
@@ -11,7 +13,7 @@ public class GameStart implements Runnable {
 	private static final int PVP_MODE = 1;
 	private static final int PVE_MODE = 2;
 	
-	private NameInputPanel nameInputPanel;
+
 	private ModeChoosePanel modeChoosePanel;
 	
 	private Database db;
@@ -19,35 +21,27 @@ public class GameStart implements Runnable {
 	private boolean waiting = true;
 	private int mode;
 	private String playername;
+	private int userID;
 	
-	public GameStart(){
+	public GameStart(String userName, String password) throws SQLException {
 
-		nameInputPanel = new NameInputPanel();
+
 		modeChoosePanel = new ModeChoosePanel();
 		db = new Database();
 		db.connect();
-		
-		nameInputPanel.getNameField().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				playername = nameInputPanel.getNameField().getText().trim();
-				if(playername.equals("AI")==true){
-					JOptionPane.showMessageDialog(null, "Reserved player name for computer AI!");
-				}
-				if (playername.equals("")==false && playername.equals("AI")==false){
-					db.getRecode(playername);
-					modeChoosePanel.addName(playername);
-					modeChoosePanel.addWins(db.getWins(playername));
-					modeChoosePanel.addLoses(db.getLoses(playername));
-					modeChoosePanel.addTies(db.getTies(playername));
-					nameInputPanel.setVisible(false);
-					modeChoosePanel.setVisible(true);
-				}
-			}
-		});
-		
+
+		userID = db.getUserID(userName, password);
+		ResultSet rs = db.getRecord(userID);
+		playername = rs.getString("name");
+
+
+		modeChoosePanel.addName(playername);
+		modeChoosePanel.addWins(db.getWins(userID));
+		modeChoosePanel.addLoses(db.getLoses(userID));
+		modeChoosePanel.addTies(db.getTies(userID));
+		modeChoosePanel.setVisible(true);
+
+
 		ActionListener modeClicked = new ActionListener() {
 			
 			@Override
@@ -69,24 +63,17 @@ public class GameStart implements Runnable {
 		thread.start();
 		
 	}
-	/*
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new GameStart();
-		
-	}
 
-	 */
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
 			waitForPlayerAction();
 			if (mode == PVP_MODE){
-				new GameController(playername);
+				//new GameController(playername);
 				
 			}else if (mode == PVE_MODE){
-				new LocalGame(playername);
+				new LocalGame(userID, playername);
 			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
