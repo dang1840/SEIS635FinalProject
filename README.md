@@ -8,3 +8,5 @@
   Entry 3,4: Store Player1 and Player2 data in PlayerVsPlayer mode
   
 2. The Player Vs Player not working correct yet. The code for Player Vs Player should go into GameController class
+
+3. Run code from TicTacToe class
