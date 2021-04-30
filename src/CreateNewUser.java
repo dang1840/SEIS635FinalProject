@@ -98,7 +98,8 @@ public class CreateNewUser extends JFrame {
                 msg += " \n";
 
                 try {
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tic-tac-toe", "root", "password");
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe?"
+							+ "user=admin&password=group8final");
 
                     String query = "INSERT INTO infotable (username, password, name, win, lose, tie) values('" + userName + "','" + password + "','" + playerName  + "'" + ",0,0,0)";
 
