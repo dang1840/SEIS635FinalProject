@@ -3,7 +3,7 @@ package com.seis635.group.tictactoe.logic;
 public class Judger {
     private char winner = ' ';
 
-    public void judge(char[][] status) {
+    public void Judge(char[][] status) {
 
         //check if anyone wins
         if (status[0][0] == status[1][1] && status[1][1] == status[2][2] && status[0][0] != ' ') {

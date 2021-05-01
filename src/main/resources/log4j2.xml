@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="INFO">
+    <CustomLevels>
+        <CustomLevel name="AUDIT" intLevel="50" />
+    </CustomLevels>
+    <Appenders>
+
+        <RollingFile name="audit" filename="/tmp/logs/seis635-tictactoe-audit.log"
+                     filePattern="/tmp/logs/PAMS-Audit-%d{MM-dd-yyyy-HH:mm:ss}.%i.log.gz">
+            <PatternLayout>
+                <pattern>"%d %-5p [%t] %C{2} (%F:%L) - %m%n"</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+                <!-- <SizeBasedTriggeringPolicy size="1 GB" /> -->
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+
+        <Root level="trace">
+            <AppenderRef ref="audit" level="audit"/>
+        </Root>
+
+        <Logger name="com.*" level="debug">
+            <AppenderRef  ref="Console"  />
+        </Logger>
+
+
+    </Loggers>
+
+</Configuration>

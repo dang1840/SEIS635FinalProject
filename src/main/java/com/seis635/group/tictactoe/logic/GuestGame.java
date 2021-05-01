@@ -72,12 +72,12 @@ public class GuestGame implements ActionListener, Runnable {
                         if (judger.getWinner() != ' ')
                             break;
                         aiTurn();
-                        judger.judge(board.getStatus());
+                        judger.Judge(board.getStatus());
                         if (judger.getWinner() != ' ')
                             break;
                     } else if (player.getRole() == 'o') {
                         aiTurn();
-                        judger.judge(board.getStatus());
+                        judger.Judge(board.getStatus());
                         if (judger.getWinner() != ' ')
                             break;
                         waitForPlayerAction();
@@ -117,7 +117,7 @@ public class GuestGame implements ActionListener, Runnable {
             rowSelected = cellClicked.getRow();
             columnSelected = cellClicked.getColumn();
             board.getStatus()[rowSelected][columnSelected] = cellClicked.getToken();
-            judger.judge(board.getStatus());
+            judger.Judge(board.getStatus());
             System.out.println("cell" + "(" + cellClicked.getRow() + "," + cellClicked.getColumn() + ")" + "clicked");
             waiting = false;
             myTurn = false;

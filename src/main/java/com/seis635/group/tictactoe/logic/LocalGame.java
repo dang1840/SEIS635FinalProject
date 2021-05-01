@@ -1,8 +1,8 @@
 package com.seis635.group.tictactoe.logic;
 
+import com.seis635.group.tictactoe.database.Database;
 import com.seis635.group.tictactoe.view.Board;
 import com.seis635.group.tictactoe.view.Cell;
-import com.seis635.group.tictactoe.database.Database;
 import com.seis635.group.tictactoe.panel.EndOptionPanel;
 import com.seis635.group.tictactoe.panel.PlayerInfoPanel;
 import com.seis635.group.tictactoe.player.Player;
@@ -106,12 +106,12 @@ public class LocalGame implements ActionListener, Runnable{
 						if (judger.getWinner()!=' ')
 							break;
 						aiTurn();
-						judger.judge(board.getStatus());
+						judger.Judge(board.getStatus());
 						if (judger.getWinner()!=' ')
 							break;
 					}else if (player.getRole() == 'o'){
 						aiTurn();
-						judger.judge(board.getStatus());
+						judger.Judge(board.getStatus());
 						if (judger.getWinner()!=' ')
 							break;
 						waitForPlayerAction();
@@ -156,7 +156,7 @@ public class LocalGame implements ActionListener, Runnable{
 			rowSelected = cellClicked.getRow();
 			columnSelected = cellClicked.getColumn();
 			board.getStatus()[rowSelected][columnSelected] = cellClicked.getToken();
-			judger.judge(board.getStatus());
+			judger.Judge(board.getStatus());
 			System.out.println("cell"+ "("+cellClicked.getRow()+","+cellClicked.getColumn()+")"+ "clicked");
 			waiting = false;
 			myTurn = false;

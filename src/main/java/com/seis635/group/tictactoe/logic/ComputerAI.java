@@ -1,8 +1,8 @@
 package com.seis635.group.tictactoe.logic;
 
+import com.seis635.group.tictactoe.view.Marker;
 import com.seis635.group.tictactoe.view.Cell;
 import com.seis635.group.tictactoe.view.Contestant;
-import com.seis635.group.tictactoe.view.Marker;
 
 import java.util.Random;
 
@@ -14,7 +14,7 @@ public class ComputerAI extends Contestant {
         super.setName("AI");
     }
 
-    public void chooseCell(char[][] status) {
+    private void chooseCell(char[][] status) {
         Random r = new Random();
         int i;
         int j;
