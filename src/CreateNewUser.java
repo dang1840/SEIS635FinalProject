@@ -114,7 +114,19 @@ public class CreateNewUser extends JFrame {
                     connection.close();
                     dispose();
                 } catch (Exception exception) {
-                    exception.printStackTrace();
+                    System.out.println(exception.toString());
+
+                    if (exception.toString().equals("java.sql.SQLIntegrityConstraintViolationException: Duplicate entry " + "'" + userName + "'" + " for key 'infotable.username_UNIQUE'")){
+                        JOptionPane.showMessageDialog(btnNewButton, "Username is already exist");
+                    }
+
+                    if (exception.toString().equals("java.sql.SQLIntegrityConstraintViolationException: Duplicate entry " + "'" + password + "'" + " for key 'infotable.password_UNIQUE'")){
+                        JOptionPane.showMessageDialog(btnNewButton, "Password is already exist");
+                    }
+
+                    if (exception.toString().equals("java.sql.SQLIntegrityConstraintViolationException: Duplicate entry " + "'" + playerName + "'" + " for key 'infotable.name_UNIQUE'")){
+                        JOptionPane.showMessageDialog(btnNewButton, "Player name is already exist");
+                    }
                 }
             }
         });
