@@ -140,7 +140,6 @@ public class UserLogin extends JFrame {
         });
         contentPane.add(guestButton);
 
-
         /**
          Quit application
          */
@@ -158,5 +157,4 @@ public class UserLogin extends JFrame {
         contentPane.add(quitButton);
 
     }
-
 }

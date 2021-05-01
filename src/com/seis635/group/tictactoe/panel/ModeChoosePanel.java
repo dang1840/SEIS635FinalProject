@@ -65,7 +65,6 @@ public class ModeChoosePanel extends JFrame{
 		
 		title.setFont(titleFont);
 		modeLbl.setFont(tipFont);
-//		setVisible(true);
 	}
 	
 	public void addName( String name){
@@ -82,10 +81,5 @@ public class ModeChoosePanel extends JFrame{
 	
 	public void addTies( String num){
 		tieLbl.setText(tieLbl.getText() + " " + num);
-	}
-	
-	public static void main(String[] args){
-		ModeChoosePanel mc = new ModeChoosePanel();
-		mc.addWins("4");
 	}
 }

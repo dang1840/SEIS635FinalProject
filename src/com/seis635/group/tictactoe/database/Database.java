@@ -5,8 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 public class Database {
-	//	private static ResultSet resultSet;
+
 	private static Statement statement;
 	private static Connection conn;
 
@@ -45,8 +46,6 @@ public class Database {
 		}
 		return 0;
 	}
-
-
 
 	public ResultSet getRecord(int id) {
 		try {
@@ -113,8 +112,6 @@ public class Database {
 		}
 	}
 
-	;
-
 	public void updateLoses(int id) {
 		int num = Integer.parseInt(getLoses(id));
 		num++;
@@ -128,8 +125,6 @@ public class Database {
 		}
 	}
 
-	;
-
 	public void updateTies(int id) {
 		int num = Integer.parseInt(getTies(id));
 		num++;
@@ -142,18 +137,4 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
-
-	;
-
-	public static void main(String arg[]) {
-		Database db = new Database();
-		db.connect();
-		db.updateWins(2);
-		db.updateLoses(2);
-		db.updateTies(2);
-		System.out.println(db.getWins(2));
-		System.out.println(db.getLoses(2));
-		System.out.println(db.getTies(2));
-	}
-
 }

@@ -7,17 +7,13 @@ import java.awt.*;
 
 public class TicTacToe {
 
-
-
     /**
      * Launch the application.
      */
     public static void main(String[] args) {
 
         String filePath = "bensound-happyrock.wav";
-        BackgroundMusic background= new BackgroundMusic();
-
-
+        BackgroundMusic background = new BackgroundMusic();
 
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -32,9 +28,5 @@ public class TicTacToe {
 
             }
         });
-
-
-
-
     }
 }

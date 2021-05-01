@@ -11,7 +11,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class LocalGame implements ActionListener, Runnable{
 	private Board board;
 	private EndOptionPanel endOptionPanel;
@@ -48,7 +47,6 @@ public class LocalGame implements ActionListener, Runnable{
 		board.getPlayerNameButton().addActionListener( new ActionListener() { //click for player info
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if(board.getPlayerNameButton().getText().equals("")==false){
 					PlayerInfoPanel pi = new PlayerInfoPanel();
 					pi.addName(player.getName());
@@ -61,7 +59,6 @@ public class LocalGame implements ActionListener, Runnable{
 		board.getOpponentNameButton().addActionListener( new ActionListener() { //click for player info
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if(board.getPlayerNameButton().getText().equals("")==false){
 					PlayerInfoPanel pi = new PlayerInfoPanel();
 					pi.addName("AI");

@@ -9,8 +9,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-public class GuestGame implements ActionListener, Runnable{
+public class GuestGame implements ActionListener, Runnable {
     private Board board;
     private EndOptionPanel endOptionPanel;
     private Player player;
@@ -21,30 +20,26 @@ public class GuestGame implements ActionListener, Runnable{
     private boolean myTurn = false;
     private boolean waiting = true;
 
-    public GuestGame(String name){
+    public GuestGame(String name) {
         board = new Board();
         endOptionPanel = new EndOptionPanel();
         player = new Player();
         ai = new ComputerAI();
         judger = new Judger();
 
-
-
         player.setName(name);
         board.setMyName(name);
         board.setOpponentName(ai.getName());
-        for (int i=0;i<3;i++){   //add listener to cells
-            for (int j=0;j<3;j++){
+        for (int i = 0; i < 3; i++) {   //add listener to cells
+            for (int j = 0; j < 3; j++) {
                 board.getCell()[i][j].addActionListener(this);
             }
         }
-
 
         endOptionPanel.rematchBtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
                 waiting = false;
                 endOptionPanel.setVisible(false);
             }
@@ -58,9 +53,9 @@ public class GuestGame implements ActionListener, Runnable{
     public void run() {
         // TODO Auto-generated method stub
         int time = 0;
-        while (true){
+        while (true) {
             try {
-                if (time != 0) {				//rematch
+                if (time != 0) {                //rematch
                     waitForPlayerAction();
                     gameReset();
                 }
@@ -68,36 +63,35 @@ public class GuestGame implements ActionListener, Runnable{
                 playerChoose();
                 System.out.println(player.getRole());
 
-                board.setMyMarker(player.getRole()+"");
-                board.setOpponentMarker(ai.getRole()+"");
+                board.setMyMarker(player.getRole() + "");
+                board.setOpponentMarker(ai.getRole() + "");
 
-                while (true){
-                    if (player.getRole() == 'x'){     //game flow
+                while (true) {
+                    if (player.getRole() == 'x') {     //game flow
                         waitForPlayerAction();
-                        if (judger.getWinner()!=' ')
+                        if (judger.getWinner() != ' ')
                             break;
                         aiTurn();
                         judger.judge(board.getStatus());
-                        if (judger.getWinner()!=' ')
+                        if (judger.getWinner() != ' ')
                             break;
-                    }else if (player.getRole() == 'o'){
+                    } else if (player.getRole() == 'o') {
                         aiTurn();
                         judger.judge(board.getStatus());
-                        if (judger.getWinner()!=' ')
+                        if (judger.getWinner() != ' ')
                             break;
                         waitForPlayerAction();
-                        if (judger.getWinner()!=' ')
+                        if (judger.getWinner() != ' ')
                             break;
                     }
                 }
-                if (judger.getWinner() == player.getRole()){
+                if (judger.getWinner() == player.getRole()) {
                     endOptionPanel.setResult("You win!");
 
-                }
-                else if (judger.getWinner() == 't'){
+                } else if (judger.getWinner() == 't') {
                     endOptionPanel.setResult("It's a tie!");
 
-                }else {
+                } else {
                     endOptionPanel.setResult("You lose!");
 
                 }
@@ -107,7 +101,6 @@ public class GuestGame implements ActionListener, Runnable{
                 endOptionPanel.setVisible(true);
 
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Connection Lost!");
                 System.exit(2);
@@ -118,14 +111,14 @@ public class GuestGame implements ActionListener, Runnable{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        if (myTurn == true){
+        if (myTurn == true) {
             Cell cellClicked = (Cell) e.getSource();
             player.putMarker(cellClicked);
             rowSelected = cellClicked.getRow();
             columnSelected = cellClicked.getColumn();
             board.getStatus()[rowSelected][columnSelected] = cellClicked.getToken();
             judger.judge(board.getStatus());
-            System.out.println("cell"+ "("+cellClicked.getRow()+","+cellClicked.getColumn()+")"+ "clicked");
+            System.out.println("cell" + "(" + cellClicked.getRow() + "," + cellClicked.getColumn() + ")" + "clicked");
             waiting = false;
             myTurn = false;
         }
@@ -138,13 +131,13 @@ public class GuestGame implements ActionListener, Runnable{
         waiting = true;
     }
 
-    public void gameReset(){
+    public void gameReset() {
         board.setMyMarker("Waiting");
         board.setOpponentMarker("Waiting");
         judger.setWinner(' ');
 
-        for (int i=0;i<3;i++){
-            for (int j=0;j<3;j++){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 board.getCell()[i][j].setToken(' ');
                 board.getCell()[i][j].setIcon(null);
                 board.getCell()[i][j].setEnabled(true);
@@ -153,24 +146,24 @@ public class GuestGame implements ActionListener, Runnable{
         }
     }
 
-    private void playerChoose(){
+    private void playerChoose() {
         double e = Math.random();
 
-        if (e<0.5){
+        if (e < 0.5) {
             player.setRole('x');
             myTurn = true;
             ai.setRole('o');
-        }else {
+        } else {
             player.setRole('o');
             myTurn = false;
             ai.setRole('x');
         }
         System.out.println(e);
     }
-    public void aiTurn(){
+
+    public void aiTurn() {
         ai.putMarker(board.getCell(), board.getStatus());
         myTurn = true;
-        waiting=true;
+        waiting = true;
     }
 }
-

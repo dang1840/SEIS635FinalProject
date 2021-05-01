@@ -6,7 +6,6 @@ import com.seis635.group.tictactoe.view.Marker;
 
 import java.util.Random;
 
-
 public class ComputerAI extends Contestant {
     private int row;
     private int column;
