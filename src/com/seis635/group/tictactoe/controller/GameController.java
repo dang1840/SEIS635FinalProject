@@ -1,3 +1,14 @@
+package com.seis635.group.tictactoe.controller;
+
+import com.seis635.group.tictactoe.database.Database;
+import com.seis635.group.tictactoe.logic.Judger;
+import com.seis635.group.tictactoe.panel.EndOptionPanel;
+import com.seis635.group.tictactoe.panel.PlayerInfoPanel;
+import com.seis635.group.tictactoe.player.Player;
+import com.seis635.group.tictactoe.view.Board;
+import com.seis635.group.tictactoe.view.Cell;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.DataInputStream;
@@ -6,7 +17,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import javax.swing.JOptionPane;
 
 
 public class GameController implements ActionListener, Runnable{
@@ -32,7 +42,7 @@ public class GameController implements ActionListener, Runnable{
 		this.userID = userID;
 		board = new Board();
 		endOptionPanel = new EndOptionPanel();
-		player = new Player();	
+		player = new Player();
 		db = new Database();
 		db.connect();
 		player.setName(name);
@@ -370,9 +380,5 @@ public class GameController implements ActionListener, Runnable{
 	}
 	public Player getPlayer(){
 		return this.player;
-	}
-	
-	public static void main(String arg[]){
-		new GameController(2,"test1");
 	}
 }

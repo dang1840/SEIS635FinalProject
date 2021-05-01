@@ -1,9 +1,7 @@
-import java.awt.Component;
-import java.awt.Dimension;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+package com.seis635.group.tictactoe.panel;
+
+import javax.swing.*;
+import java.awt.*;
 
 
 public class PlayerInfoPanel extends JFrame{
@@ -61,12 +59,5 @@ public class PlayerInfoPanel extends JFrame{
 	
 	public void addTies( String num){
 		tieLbl.setText(tieLbl.getText() + " " + num);
-	}
-	public static void main(String[] args){
-		PlayerInfoPanel mc = new PlayerInfoPanel();
-		mc.addName("test");
-		mc.addWins("4");
-		mc.addLoses("5");
-		mc.addTies("6");
 	}
 }

@@ -1,4 +1,4 @@
-import javax.swing.JOptionPane;
+package com.seis635.group.tictactoe.logic;
 
 
 public class Judger {

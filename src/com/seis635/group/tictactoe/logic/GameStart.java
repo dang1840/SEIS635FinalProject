@@ -1,28 +1,30 @@
+package com.seis635.group.tictactoe.logic;
+
+import com.seis635.group.tictactoe.database.Database;
+import com.seis635.group.tictactoe.panel.ModeChoosePanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 
 
 public class GameStart implements Runnable {
-	
+
 	private static final int PVP_MODE = 1;
 	private static final int PVE_MODE = 2;
-	
+
 
 	private ModeChoosePanel modeChoosePanel;
-	
+
 	private Database db;
-	
+
 	private boolean waiting = true;
 	private int mode;
 	private String playername;
 	private int userID;
-	
+
 	public GameStart(String userName, String password) throws SQLException {
 
 
@@ -43,7 +45,7 @@ public class GameStart implements Runnable {
 
 
 		ActionListener modeClicked = new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -52,7 +54,7 @@ public class GameStart implements Runnable {
 				}else if (e.getSource()==modeChoosePanel.pveBtn){
 					mode = PVE_MODE;
 				}
-				
+
 				modeChoosePanel.setVisible(false);
 				waiting = false;	//start game!
 			}
@@ -61,7 +63,7 @@ public class GameStart implements Runnable {
 		modeChoosePanel.pvpBtn.addActionListener(modeClicked);
 		Thread thread = new Thread(this);
 		thread.start();
-		
+
 	}
 
 	@Override
@@ -70,8 +72,6 @@ public class GameStart implements Runnable {
 		try {
 			waitForPlayerAction();
 			if (mode == PVP_MODE){
-				//new GameController(playername);
-				
 			}else if (mode == PVE_MODE){
 				new LocalGame(userID, playername);
 			}
@@ -79,13 +79,13 @@ public class GameStart implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	private void waitForPlayerAction() throws InterruptedException { 
+	private void waitForPlayerAction() throws InterruptedException {
 		while (waiting) {
-			Thread.sleep(100); 
+			Thread.sleep(100);
 		}
-		waiting = true; 
+		waiting = true;
 	}
 }
 

@@ -1,20 +1,13 @@
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Toolkit;
+package com.seis635.group.tictactoe.view;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 /**
  * User Registration using Swing
@@ -125,7 +118,7 @@ public class CreateNewUser extends JFrame {
                     }
 
                     if (exception.toString().equals("java.sql.SQLIntegrityConstraintViolationException: Duplicate entry " + "'" + playerName + "'" + " for key 'infotable.name_UNIQUE'")){
-                        JOptionPane.showMessageDialog(btnNewButton, "Player name is already exist");
+                        JOptionPane.showMessageDialog(btnNewButton, "com.seis635.group.tictactoe.player.Player name is already exist");
                     }
                 }
             }

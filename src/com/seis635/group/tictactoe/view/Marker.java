@@ -1,3 +1,5 @@
+package com.seis635.group.tictactoe.view;
+
 import javax.swing.ImageIcon;
 
 

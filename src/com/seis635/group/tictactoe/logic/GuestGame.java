@@ -1,7 +1,13 @@
+package com.seis635.group.tictactoe.logic;
+
+import com.seis635.group.tictactoe.view.Board;
+import com.seis635.group.tictactoe.view.Cell;
+import com.seis635.group.tictactoe.panel.EndOptionPanel;
+import com.seis635.group.tictactoe.player.Player;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JOptionPane;
 
 
 public class GuestGame implements ActionListener, Runnable{
@@ -165,10 +171,6 @@ public class GuestGame implements ActionListener, Runnable{
         ai.putMarker(board.getCell(), board.getStatus());
         myTurn = true;
         waiting=true;
-    }
-
-    public static void main(String arg[]){
-        new GuestGame("test");
     }
 }
 

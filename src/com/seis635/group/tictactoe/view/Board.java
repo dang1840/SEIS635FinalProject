@@ -1,6 +1,7 @@
+package com.seis635.group.tictactoe.view;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 
 public class Board extends JFrame {

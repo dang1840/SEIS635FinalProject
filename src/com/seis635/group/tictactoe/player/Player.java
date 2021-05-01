@@ -1,3 +1,8 @@
+package com.seis635.group.tictactoe.player;
+
+import com.seis635.group.tictactoe.view.Cell;
+import com.seis635.group.tictactoe.view.Contestant;
+import com.seis635.group.tictactoe.view.Marker;
 
 public class Player extends Contestant {
 	public void putMarker(Cell cell){
@@ -11,5 +16,4 @@ public class Player extends Contestant {
 		cell.setToken(role);
 		cell.setEnabled(false);
 	}
-	
 }

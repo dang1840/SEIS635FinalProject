@@ -1,4 +1,4 @@
-
+package com.seis635.group.tictactoe.view;
 
 public class Contestant  {
 	private String name;

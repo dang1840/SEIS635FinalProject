@@ -1,15 +1,7 @@
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
+package com.seis635.group.tictactoe.panel;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class ModeChoosePanel extends JFrame{

@@ -1,18 +1,14 @@
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
+package com.seis635.group.tictactoe.view;
+
+import com.seis635.group.tictactoe.logic.GameStart;
+import com.seis635.group.tictactoe.logic.GuestGame;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 public class UserLogin extends JFrame {
 
@@ -25,9 +21,6 @@ public class UserLogin extends JFrame {
     private JButton quitButton;
     private JLabel label;
     private JPanel contentPane;
-
-
-
 
     /**
      * Create the frame.
@@ -82,7 +75,7 @@ public class UserLogin extends JFrame {
                 String password = passwordField.getText();
                 try {
                     Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe?"
-							+ "user=admin&password=group8final");
+                            + "user=admin&password=group8final");
 
                     PreparedStatement st = (PreparedStatement) connection
                             .prepareStatement("Select username, password from infotable where username=? and password=?");
@@ -108,8 +101,8 @@ public class UserLogin extends JFrame {
         contentPane.add(btnNewButton);
 
         /**
-        Create new account
-        */
+         Create new account
+         */
         signUpButton = new JButton("New Account");
         signUpButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
         signUpButton.setBounds(720, 392, 180, 73);
@@ -130,25 +123,20 @@ public class UserLogin extends JFrame {
 
         });
 
-
-
         contentPane.add(signUpButton);
 
         /**
          Play as a guest
          */
-       guestButton = new JButton("Guest");
+        guestButton = new JButton("Guest");
         guestButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
-       guestButton.setBounds(150, 392, 180, 73);
+        guestButton.setBounds(150, 392, 180, 73);
         guestButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 new GuestGame("Guest");
 
             }
-
-
-
         });
         contentPane.add(guestButton);
 
@@ -169,11 +157,6 @@ public class UserLogin extends JFrame {
 
         contentPane.add(quitButton);
 
-
-
-
     }
-
-
 
 }
