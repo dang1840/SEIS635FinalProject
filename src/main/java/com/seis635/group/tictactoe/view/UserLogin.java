@@ -2,6 +2,7 @@ package com.seis635.group.tictactoe.view;
 
 import com.seis635.group.tictactoe.logic.GameStart;
 import com.seis635.group.tictactoe.logic.GuestGame;
+import com.seis635.group.tictactoe.music.BackgroundMusic;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,11 +22,16 @@ public class UserLogin extends JFrame {
     private JButton quitButton;
     private JLabel label;
     private JPanel contentPane;
+    
+    private BackgroundMusic background = new BackgroundMusic();
 
     /**
      * Create the frame.
      */
     public UserLogin() {
+        
+        background.playMusic();
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
         setResizable(false);
@@ -155,6 +161,44 @@ public class UserLogin extends JFrame {
         });
 
         contentPane.add(quitButton);
+        
+         /**
+         Mute Music
+         */
+        muteButton = new JButton("MUTE");
+        muteButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        muteButton.setBounds(10, 10, 150, 73);
+        muteButton.setForeground(Color.BLUE);
+        muteButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                background.pause();
+                muteButton.setVisible(false);
+                unMuteButton.setVisible(true);
+            }
+        });
+
+        contentPane.add(muteButton);
+
+
+        /**
+         Unmute Music
+         */
+        unMuteButton = new JButton("UNMUTE");
+        unMuteButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        unMuteButton.setBounds(10, 10, 150, 73);
+        unMuteButton.setForeground(Color.BLUE);
+        unMuteButton.setVisible(false);
+        unMuteButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                background.resume();
+                unMuteButton.setVisible(false);
+                muteButton.setVisible(true);
+            }
+        });
+
+        contentPane.add(unMuteButton);
 
     }
 }
