@@ -166,8 +166,8 @@ public class GameController implements ActionListener, Runnable {
 
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Connection Lost, wait for another player!");
+                     JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);                    JOptionPane.showMessageDialog(null, "Connection Lost, wait for another player!");
                     gameReset();
                     board.getOpponentNameButton().setText("");
                     time = 0;
@@ -250,8 +250,8 @@ public class GameController implements ActionListener, Runnable {
 
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Connection Lost!");
+                     JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);                    JOptionPane.showMessageDialog(null, "Connection Lost!");
                     System.exit(2);
                 }
             }
@@ -350,8 +350,8 @@ public class GameController implements ActionListener, Runnable {
             dataout = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Socket is in use!");
+             JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);            JOptionPane.showMessageDialog(null, "Socket is in use!");
             System.exit(1);
         }
     }
@@ -377,8 +377,8 @@ public class GameController implements ActionListener, Runnable {
             dataout = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+             JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);        }
     }
 
     public Board getBoard() {

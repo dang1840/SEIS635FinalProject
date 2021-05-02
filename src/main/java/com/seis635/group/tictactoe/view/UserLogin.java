@@ -2,6 +2,8 @@ package com.seis635.group.tictactoe.view;
 
 import com.seis635.group.tictactoe.logic.GameStart;
 import com.seis635.group.tictactoe.logic.GuestGame;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class UserLogin extends JFrame {
+    private static final Logger LOGGER = LogManager.getLogger(UserLogin.class);
 
     private static final long serialVersionUID = 1L;
     private JTextField textField;
@@ -93,7 +96,8 @@ public class UserLogin extends JFrame {
                         JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
                     }
                 } catch (SQLException sqlException) {
-                    sqlException.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Unable to connect to database to load user profile");
+                    LOGGER.error("Internal Error", sqlException);
                 }
             }
         });
@@ -115,7 +119,8 @@ public class UserLogin extends JFrame {
                             CreateNewUser frame = new CreateNewUser();
                             frame.setVisible(true);
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            JOptionPane.showMessageDialog(null, e.getMessage());
+                            LOGGER.error(e);
                         }
                     }
                 });

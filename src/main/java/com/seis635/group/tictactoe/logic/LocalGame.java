@@ -146,8 +146,8 @@ public class LocalGame implements ActionListener, Runnable{
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Connection Lost!");
+				 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);				JOptionPane.showMessageDialog(null, "Connection Lost!");
 				System.exit(2);
 			} 
 		}

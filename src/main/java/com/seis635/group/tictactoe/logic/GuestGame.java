@@ -108,8 +108,8 @@ public class GuestGame implements ActionListener, Runnable {
                 endOptionPanel.setVisible(true);
 
             } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Connection Lost!");
+                 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);                JOptionPane.showMessageDialog(null, "Connection Lost!");
                 System.exit(2);
             }
         }

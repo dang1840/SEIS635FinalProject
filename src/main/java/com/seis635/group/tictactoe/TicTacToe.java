@@ -5,6 +5,7 @@ import com.seis635.group.tictactoe.music.BackgroundMusic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class TicTacToe {
@@ -15,7 +16,6 @@ public class TicTacToe {
      * Launch the application.
      */
     public static void main(String[] args) {
-
         String filePath = "bensound-happyrock.wav";
         BackgroundMusic background = new BackgroundMusic();
         EventQueue.invokeLater(new Runnable() {
@@ -26,8 +26,8 @@ public class TicTacToe {
                     //background.playMusic(filePath);
 
                 } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                     JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);                }
 
             }
         });

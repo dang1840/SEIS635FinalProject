@@ -4,6 +4,7 @@ import com.seis635.group.tictactoe.TicTacToe;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -27,8 +28,7 @@ public class Database {
 			LOGGER.info("Succeeded connecting to the Database!");
 		} catch (Exception e) {
 			LOGGER.info("Failed to the Database!");
-			e.printStackTrace();
-		}
+			JOptionPane.showMessageDialog(null, e.getCause());		}
 
 	}
 
@@ -46,8 +46,8 @@ public class Database {
 			return id;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			LOGGER.info("failed to query");
+			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);			LOGGER.info("failed to query");
 		}
 		return 0;
 	}
@@ -68,8 +68,8 @@ public class Database {
 			return resultSet;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			LOGGER.info("failed to query");
+			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);			LOGGER.info("failed to query");
 		}
 		return null;
 	}
@@ -79,8 +79,8 @@ public class Database {
 			return getRecord(id).getString("win");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);		}
 		return "XX";
 	}
 
@@ -89,8 +89,8 @@ public class Database {
 			return getRecord(id).getString("lose");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);		}
 		return "XX";
 	}
 
@@ -99,8 +99,8 @@ public class Database {
 			return getRecord(id).getString("tie");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);		}
 		return "XX";
 	}
 
@@ -113,8 +113,8 @@ public class Database {
 			LOGGER.info("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);		}
 	}
 
 	public void updateLoses(int id) {
@@ -126,8 +126,8 @@ public class Database {
 			LOGGER.info("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);		}
 	}
 
 	public void updateTies(int id) {
@@ -139,7 +139,7 @@ public class Database {
 			LOGGER.info("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
+LOGGER.error("Internal Error", e);		}
 	}
 }
