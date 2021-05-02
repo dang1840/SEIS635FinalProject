@@ -13,7 +13,7 @@ public class BackgroundMusic {
 
 
 
-    void playMusic(){
+    public void playMusic(){
         try {
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
             clip = AudioSystem.getClip();
