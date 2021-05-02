@@ -1,5 +1,7 @@
 package com.seis635.group.tictactoe.panel;
 
+import com.seis635.group.tictactoe.database.Database;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,7 @@ public class EndOptionPanel extends JFrame {
     public JButton rematchBtn;
     public JButton closeBtn;
     private JLabel resultLbl;
+    private Database db;
 
     private Font lblFont = new Font("Calibri", Font.BOLD, 50);
     private Font btnFont = new Font("Calibri", Font.PLAIN, 25);
@@ -47,6 +50,12 @@ public class EndOptionPanel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 // TODO Auto-generated method stub
+                db = new Database();
+                db.connect();
+                db.resetScore(1);
+                db.resetScore(3);
+                db.resetScore(4);
+
                 System.exit(0);
             }
         });

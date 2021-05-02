@@ -154,8 +154,6 @@ public class UserLogin extends JFrame {
 
             }
 
-
-
         });
         contentPane.add(guestButton);
 

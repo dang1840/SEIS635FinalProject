@@ -1,5 +1,6 @@
 package com.seis635.group.tictactoe.logic;
 
+import com.seis635.group.tictactoe.controller.GameController;
 import com.seis635.group.tictactoe.database.Database;
 import com.seis635.group.tictactoe.panel.ModeChoosePanel;
 
@@ -65,6 +66,7 @@ public class GameStart implements Runnable {
         try {
             waitForPlayerAction();
             if (mode == PVP_MODE) {
+                new GameController();
             } else if (mode == PVE_MODE) {
                 new LocalGame(userID, playername);
             }

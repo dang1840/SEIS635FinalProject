@@ -137,4 +137,15 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
+	public void resetScore (int id) {
+		String update = "update infotable set win = 0, lose = 0, tie = 0 where id = " + id;
+		try {
+			statement.executeUpdate(update);
+			System.out.println("Record updated!");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
