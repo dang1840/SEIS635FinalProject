@@ -7,23 +7,48 @@ import java.io.File;
 
 public class BackgroundMusic {
 
-    void playMusic(String musicLocation){
-        try {
-            File musicPath = new File(musicLocation);
+    private File musicPath = new File("251461__joshuaempyre__arcade-music-loop.wav");
+    private Clip clip;
+    private int lastFrame;
 
-            if(musicPath.exists()) {
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.start();
-                clip.loop(Clip.LOOP_CONTINUOUSLY);
-            }
-            else{
-                System.out.println("Can't find file");
-            }
+
+
+    void playMusic(){
+        try {
+            AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+            clip = AudioSystem.getClip();
+            clip.open(audioInput);
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+
         }
         catch(Exception ex){
             ex.printStackTrace();
         }
     }
+
+    public void pause() {
+
+        if (clip != null && clip.isRunning()) {
+            lastFrame = clip.getFramePosition();
+            clip.stop();
+        }
+
+    }
+
+    public void resume() {
+
+        if (clip != null && !clip.isRunning()) {
+            // Make sure we haven't passed the end of the file...
+            if (lastFrame < clip.getFrameLength()) {
+                clip.setFramePosition(lastFrame);
+            } else {
+                clip.setFramePosition(0);
+            }
+            clip.start();
+        }
+
+    }
 }
+
