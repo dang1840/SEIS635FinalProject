@@ -1,8 +1,7 @@
 package com.seis635.group.tictactoe.logic;
 
 import com.seis635.group.tictactoe.view.Board;
-import com.seis635.group.tictactoe.view.Cell;
-import org.junit.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
