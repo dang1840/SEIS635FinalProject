@@ -1,5 +1,6 @@
 package com.seis635.group.tictactoe.controller;
 
+import com.seis635.group.tictactoe.TicTacToe;
 import com.seis635.group.tictactoe.database.Database;
 import com.seis635.group.tictactoe.view.Board;
 import com.seis635.group.tictactoe.view.Cell;
@@ -7,6 +8,8 @@ import com.seis635.group.tictactoe.logic.Judger;
 import com.seis635.group.tictactoe.panel.EndOptionPanel;
 import com.seis635.group.tictactoe.panel.PlayerInfoPanel;
 import com.seis635.group.tictactoe.player.Player;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,6 +23,9 @@ import java.net.Socket;
 
 
 public class GameController implements ActionListener, Runnable {
+
+    private static final Logger LOGGER = LogManager.getLogger(GameController.class);
+
     private Board board;
     private EndOptionPanel endOptionPanel;
     private Player player;
@@ -112,9 +118,9 @@ public class GameController implements ActionListener, Runnable {
                         waitForPlayerAction();
                         gameReset();
                     }
-                    System.out.println("start to connect");
+                    LOGGER.info("start to connect");
                     playerChoose();
-                    System.out.println(player.getRole());
+                    LOGGER.info(player.getRole());
                     dataout.writeChar(otherplayer);
 
                     board.setMyMarker(player.getRole() + "");
@@ -190,7 +196,7 @@ public class GameController implements ActionListener, Runnable {
                         gameReset();
                     }
                     char playerChoose = datain.readChar();
-                    System.out.println(playerChoose);
+                    LOGGER.info(playerChoose);
 
                     if (playerChoose == 'x') {
                         player.setRole('x');
@@ -265,7 +271,7 @@ public class GameController implements ActionListener, Runnable {
 //				judger.judge(board.getStatus());
 //			}
             board.getStatus()[rowSelected][columnSelected] = cellClicked.getToken();
-            System.out.println("cell" + "(" + cellClicked.getRow() + "," + cellClicked.getColumn() + ")" + "clicked");
+            LOGGER.info("cell" + "(" + cellClicked.getRow() + "," + cellClicked.getColumn() + ")" + "clicked");
             waiting = false;
         }
     }
@@ -311,7 +317,7 @@ public class GameController implements ActionListener, Runnable {
 
     private void recieveWinner() throws IOException {
         winner = datain.readChar();
-        System.out.println("winner: " + winner);
+        LOGGER.info("winner: " + winner);
     }
 
     private void waitForPlayerAction() throws InterruptedException {
@@ -333,7 +339,7 @@ public class GameController implements ActionListener, Runnable {
             myTurn = false;
             otherplayer = 'x';
         }
-        System.out.println(e);
+        LOGGER.info(e);
     }
 
     private void connectToClient() {
@@ -358,7 +364,7 @@ public class GameController implements ActionListener, Runnable {
         } catch (IOException e) {
             // TODO Auto-generated catch block
             System.err.print(e);
-            System.out.println("try to start as server");
+            LOGGER.info("try to start as server");
             isServer = true;
         }
     }

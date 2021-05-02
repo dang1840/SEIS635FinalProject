@@ -59,9 +59,9 @@ public class GuestGame implements ActionListener, Runnable {
                     waitForPlayerAction();
                     gameReset();
                 }
-                System.out.println("start to connect");
+                LOGGER.info("start to connect");
                 playerChoose();
-                System.out.println(player.getRole());
+                LOGGER.info(player.getRole());
 
                 board.setMyMarker(player.getRole() + "");
                 board.setOpponentMarker(ai.getRole() + "");
@@ -118,7 +118,7 @@ public class GuestGame implements ActionListener, Runnable {
             columnSelected = cellClicked.getColumn();
             board.getStatus()[rowSelected][columnSelected] = cellClicked.getToken();
             judger.Judge(board.getStatus());
-            System.out.println("cell" + "(" + cellClicked.getRow() + "," + cellClicked.getColumn() + ")" + "clicked");
+            LOGGER.info("cell" + "(" + cellClicked.getRow() + "," + cellClicked.getColumn() + ")" + "clicked");
             waiting = false;
             myTurn = false;
         }
@@ -158,7 +158,7 @@ public class GuestGame implements ActionListener, Runnable {
             myTurn = false;
             ai.setRole('x');
         }
-        System.out.println(e);
+        LOGGER.info(e);
     }
 
     public void aiTurn() {

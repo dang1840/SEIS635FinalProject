@@ -1,5 +1,9 @@
 package com.seis635.group.tictactoe.database;
 
+import com.seis635.group.tictactoe.TicTacToe;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Database {
+	private static final Logger LOGGER = LogManager.getLogger(Database.class);
 
 	private static Statement statement;
 	private static Connection conn;
@@ -19,9 +24,9 @@ public class Database {
 			conn = DriverManager
 					.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe?"
 							+ "user=admin&password=group8final");
-			System.out.println("Succeeded connecting to the Database!");
+			LOGGER.info("Succeeded connecting to the Database!");
 		} catch (Exception e) {
-			System.out.println("Failed to the Database!");
+			LOGGER.info("Failed to the Database!");
 			e.printStackTrace();
 		}
 
@@ -35,14 +40,14 @@ public class Database {
 			statement = conn.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			if (resultSet.next() == false) {
-				System.out.println("Record does not exist");
+				LOGGER.info("Record does not exist");
 			}
 			id = resultSet.getInt("id");
 			return id;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.print("failed to query");
+			LOGGER.info("failed to query");
 		}
 		return 0;
 	}
@@ -53,7 +58,7 @@ public class Database {
 			statement = conn.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			if (resultSet.next() == false) {
-				System.out.println("Record does not exist");
+				LOGGER.info("Record does not exist");
 				//String update = "Insert into playerinfo (name, win, lose, tie) values (" + "'" + name + "'" + ",0,0,0)";
 				//statement.executeUpdate(update);
 				//resultSet = statement.executeQuery(query);
@@ -64,7 +69,7 @@ public class Database {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.print("failed to query");
+			LOGGER.info("failed to query");
 		}
 		return null;
 	}
@@ -105,7 +110,7 @@ public class Database {
 		String update = "update infotable set win = " + num + " where id = " + id;
 		try {
 			statement.executeUpdate(update);
-			System.out.println("Record updated!");
+			LOGGER.info("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,7 +123,7 @@ public class Database {
 		String update = "update infotable set lose = " + num + " where id= " + id;
 		try {
 			statement.executeUpdate(update);
-			System.out.println("Record updated!");
+			LOGGER.info("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -131,7 +136,7 @@ public class Database {
 		String update = "update infotable set tie = " + num + " where id =" + id;
 		try {
 			statement.executeUpdate(update);
-			System.out.println("Record updated!");
+			LOGGER.info("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

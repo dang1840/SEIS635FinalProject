@@ -1,5 +1,9 @@
 package com.seis635.group.tictactoe.view;
 
+import com.seis635.group.tictactoe.TicTacToe;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -16,6 +20,8 @@ import java.sql.Statement;
  */
 public class CreateNewUser extends JFrame {
     private static final long serialVersionUID = 1L;
+    private static final Logger LOGGER = LogManager.getLogger(CreateNewUser.class);
+
     private JPanel contentPane;
     private JTextField name;
     private JTextField username;
@@ -107,7 +113,7 @@ public class CreateNewUser extends JFrame {
                     connection.close();
                     dispose();
                 } catch (Exception exception) {
-                    System.out.println(exception.toString());
+                    LOGGER.info(exception.toString());
 
                     if (exception.toString().equals("java.sql.SQLIntegrityConstraintViolationException: Duplicate entry " + "'" + userName + "'" + " for key 'infotable.username_UNIQUE'")){
                         JOptionPane.showMessageDialog(btnNewButton, "Username is already exist");

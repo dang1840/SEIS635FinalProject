@@ -1,17 +1,23 @@
 package com.seis635.group.tictactoe.logic;
 
+import com.seis635.group.tictactoe.TicTacToe;
 import com.seis635.group.tictactoe.database.Database;
 import com.seis635.group.tictactoe.view.Board;
 import com.seis635.group.tictactoe.view.Cell;
 import com.seis635.group.tictactoe.panel.EndOptionPanel;
 import com.seis635.group.tictactoe.panel.PlayerInfoPanel;
 import com.seis635.group.tictactoe.player.Player;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LocalGame implements ActionListener, Runnable{
+	private static final Logger LOGGER = LogManager.getLogger(LocalGame.class);
+
+
 	private Board board;
 	private EndOptionPanel endOptionPanel;
 	private Player player;
@@ -93,9 +99,9 @@ public class LocalGame implements ActionListener, Runnable{
 					waitForPlayerAction();
 					gameReset();
 				}
-				System.out.println("start to connect");
+				LOGGER.info("start to connect");
 				playerChoose();
-				System.out.println(player.getRole());
+				LOGGER.info(player.getRole());
 				
 				board.setMyMarker(player.getRole()+"");
 				board.setOpponentMarker(ai.getRole()+"");
@@ -157,7 +163,7 @@ public class LocalGame implements ActionListener, Runnable{
 			columnSelected = cellClicked.getColumn();
 			board.getStatus()[rowSelected][columnSelected] = cellClicked.getToken();
 			judger.Judge(board.getStatus());
-			System.out.println("cell"+ "("+cellClicked.getRow()+","+cellClicked.getColumn()+")"+ "clicked");
+			LOGGER.info("cell"+ "("+cellClicked.getRow()+","+cellClicked.getColumn()+")"+ "clicked");
 			waiting = false;
 			myTurn = false;
 		}
@@ -197,7 +203,7 @@ public class LocalGame implements ActionListener, Runnable{
 			myTurn = false;
 			ai.setRole('x');
 		}
-		System.out.println(e);
+		LOGGER.info(e);
 	}
 	public void aiTurn(){   
 		ai.putMarker(board.getCell(), board.getStatus());
