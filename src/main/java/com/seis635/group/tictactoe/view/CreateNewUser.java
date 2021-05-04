@@ -1,8 +1,7 @@
 package com.seis635.group.tictactoe.view;
 
-import com.seis635.group.tictactoe.TicTacToe;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

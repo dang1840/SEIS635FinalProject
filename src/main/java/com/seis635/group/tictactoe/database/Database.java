@@ -1,15 +1,10 @@
 package com.seis635.group.tictactoe.database;
 
-import com.seis635.group.tictactoe.TicTacToe;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Database {
 	private static final Logger LOGGER = LogManager.getLogger(Database.class);

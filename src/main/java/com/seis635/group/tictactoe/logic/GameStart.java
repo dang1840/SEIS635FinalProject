@@ -1,10 +1,9 @@
 package com.seis635.group.tictactoe.logic;
 
-import com.seis635.group.tictactoe.TicTacToe;
 import com.seis635.group.tictactoe.database.Database;
 import com.seis635.group.tictactoe.panel.ModeChoosePanel;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

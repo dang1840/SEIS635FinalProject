@@ -1,14 +1,13 @@
 package com.seis635.group.tictactoe.logic;
 
-import com.seis635.group.tictactoe.TicTacToe;
 import com.seis635.group.tictactoe.database.Database;
-import com.seis635.group.tictactoe.view.Board;
-import com.seis635.group.tictactoe.view.Cell;
 import com.seis635.group.tictactoe.panel.EndOptionPanel;
 import com.seis635.group.tictactoe.panel.PlayerInfoPanel;
 import com.seis635.group.tictactoe.player.Player;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.seis635.group.tictactoe.view.Board;
+import com.seis635.group.tictactoe.view.Cell;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
