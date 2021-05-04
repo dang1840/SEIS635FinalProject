@@ -13,9 +13,12 @@
 
 4. User Stories:
 
-  . As a user, I want to be able to play against the computer
-  . As a user, I want to be able to play against another user
-  . As a user, I want to be able to keep track of how many games I have played
+  . As a user, I would like the game to hava Player Vs Player mode, so that I can play the game with my friends.
+  . As a user, I would like the game to have Player Vs Enemy, so that I can play against the computer.
+  . As a user, I would like the game to have a login page, so that I can create my own game account.
+  
+  
+  . As a user, I would like the game to have a tracking board, so that I can know how many games I have played
   . As a user, I want to be able to keep track of my wins
   . As a user, I want to be able to keep track of losses
   
