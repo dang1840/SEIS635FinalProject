@@ -1,0 +1,252 @@
+@startuml
+class com.seis635.group.tictactoe.view.CreateNewUser {
+- {static} long serialVersionUID
+- {static} Logger LOGGER
+- JPanel contentPane
+- JTextField name
+- JTextField username
+- JPasswordField passwordField
+- JButton btnNewButton
+}
+class com.seis635.group.tictactoe.database.Database {
+- {static} Logger LOGGER
+- {static} Statement statement
+- {static} Connection conn
++ void connect()
++ int getUserID(String,String)
++ ResultSet getRecord(int)
++ String getWins(int)
++ String getLoses(int)
++ String getTies(int)
++ void updateWins(int)
++ void updateLoses(int)
++ void updateTies(int)
+}
+class com.seis635.group.tictactoe.logic.LocalGame {
+- {static} Logger LOGGER
+- Board board
+- EndOptionPanel endOptionPanel
+- Player player
+- ComputerAI ai
+- Judger judger
+- Database db
+- int rowSelected
+- int columnSelected
+- boolean myTurn
+- boolean waiting
+- int userID
++ void run()
++ void actionPerformed(ActionEvent)
+- void waitForPlayerAction()
++ void gameReset()
+- void playerChoose()
++ void aiTurn()
+}
+class com.seis635.group.tictactoe.music.BackgroundMusic {
+- {static} Logger LOGGER
+~ void playMusic(String)
+}
+class com.seis635.group.tictactoe.panel.NameInputPanel {
+- JLabel gameTitle
+- JLabel toolTip
+- JTextField getNameField
+- Font titleFont
+- Font tipFont
++ JTextField getNameField()
+}
+class com.seis635.group.tictactoe.player.Player {
++ void putMarker(Cell)
+}
+class com.seis635.group.tictactoe.logic.GameStart {
+- {static} Logger LOGGER
+- {static} int PVP_MODE
+- {static} int PVE_MODE
+- ModeChoosePanel modeChoosePanel
+- Database db
+- boolean waiting
+- int mode
+- String playername
+- int userID
++ void run()
+- void waitForPlayerAction()
+}
+class com.seis635.group.tictactoe.TicTacToe {
+- {static} Logger LOGGER
++ {static} void main(String[])
+}
+class com.seis635.group.tictactoe.panel.ModeChoosePanel {
+- JLabel title
+- JLabel subtitle
+- JLabel playerLbl
+- JLabel winLbl
+- JLabel loseLbl
+- JLabel tieLbl
+- JLabel modeLbl
+- JPanel modePnl
++ JButton pvpBtn
++ JButton pveBtn
+- Font titleFont
+- Font tipFont
++ void addName(String)
++ void addWins(String)
++ void addLoses(String)
++ void addTies(String)
+}
+class com.seis635.group.tictactoe.logic.ComputerAI {
+- int row
+- int column
+- void chooseCell(char[][])
++ void putMarker(Cell[][],char[][])
+}
+class com.seis635.group.tictactoe.panel.EndOptionPanel {
++ JButton rematchBtn
++ JButton closeBtn
+- JLabel resultLbl
+- Font lblFont
+- Font btnFont
++ void setResult(String)
+}
+class com.seis635.group.tictactoe.view.Marker {
++ {static} ImageIcon X
++ {static} ImageIcon O
+}
+class com.seis635.group.tictactoe.view.Contestant {
+- String name
+# char role
++ void setRole(char)
++ char getRole()
++ void setName(String)
++ String getName()
+}
+class com.seis635.group.tictactoe.logic.GuestGame {
+- {static} Logger LOGGER
+- Board board
+- EndOptionPanel endOptionPanel
+- Player player
+- ComputerAI ai
+- Judger judger
+- int rowSelected
+- int columnSelected
+- boolean myTurn
+- boolean waiting
++ void run()
++ void actionPerformed(ActionEvent)
+- void waitForPlayerAction()
++ void gameReset()
+- void playerChoose()
++ void aiTurn()
+}
+class com.seis635.group.tictactoe.view.UserLogin {
+- {static} Logger LOGGER
+- {static} long serialVersionUID
+- JTextField textField
+- JPasswordField passwordField
+- JButton btnNewButton
+- JButton signUpButton
+- JButton guestButton
+- JButton quitButton
+- JLabel label
+- JPanel contentPane
+}
+class com.seis635.group.tictactoe.controller.GameController {
+- {static} Logger LOGGER
+- Board board
+- EndOptionPanel endOptionPanel
+- Player player
+- Judger judger
+- Database db
+~ ServerSocket server
+- DataInputStream datain
+- DataOutputStream dataout
+- int rowSelected
+- int columnSelected
+- boolean isServer
+- boolean myTurn
+- boolean waiting
+- char otherplayer
+- char winner
+- int userID
++ void run()
++ void actionPerformed(ActionEvent)
++ void gameReset()
+- void sendMove(int,int)
+- void recieveMove()
+- void sendWinner()
+- void recieveWinner()
+- void waitForPlayerAction()
+- void playerChoose()
+- void connectToClient()
+- void connectToServer()
++ void waintingforClient()
++ Board getBoard()
++ Player getPlayer()
+}
+class com.seis635.group.tictactoe.view.Cell {
+- int row
+- int column
+- char token
++ void setToken(char)
++ char getToken()
++ int getRow()
++ int getColumn()
+}
+class com.seis635.group.tictactoe.panel.PlayerInfoPanel {
+- JLabel subtitle
+- JLabel playerLbl
+- JLabel winLbl
+- JLabel loseLbl
+- JLabel tieLbl
++ void addName(String)
++ void addWins(String)
++ void addLoses(String)
++ void addTies(String)
+}
+class com.seis635.group.tictactoe.view.Board {
+- char[][] status
+- {static} int BOARD_WIDTH
+- {static} int BOARD_HEIGHT
+- JPanel playersPanel
+- JLabel myMarker
+- JLabel opponentMarker
+- JButton playerNameBtn
+- JButton opponentNameBtn
+- JPanel grid
+- Cell[][] cell
+- Font font
+- Font font1
++ void setMyMarker(String)
++ void setOpponentMarker(String)
++ void setMyName(String)
++ void setOpponentName(String)
++ char[][] getStatus()
++ Cell[][] getCell()
++ JButton getPlayerNameButton()
++ JButton getOpponentNameButton()
++ {static} void main(String[])
+}
+class com.seis635.group.tictactoe.logic.Judger {
+- char winner
++ void Judge(char[][])
++ char getWinner()
++ void setWinner(char)
+}
+
+
+com.seis635.group.tictactoe.view.JFrame <|-- com.seis635.group.tictactoe.view.CreateNewUser
+java.awt.event.ActionListener <|.. com.seis635.group.tictactoe.logic.LocalGame
+com.seis635.group.tictactoe.logic.Runnable <|.. com.seis635.group.tictactoe.logic.LocalGame
+com.seis635.group.tictactoe.panel.JFrame <|-- com.seis635.group.tictactoe.panel.NameInputPanel
+com.seis635.group.tictactoe.view.Contestant <|-- com.seis635.group.tictactoe.player.Player
+com.seis635.group.tictactoe.logic.Runnable <|.. com.seis635.group.tictactoe.logic.GameStart
+com.seis635.group.tictactoe.panel.JFrame <|-- com.seis635.group.tictactoe.panel.ModeChoosePanel
+com.seis635.group.tictactoe.view.Contestant <|-- com.seis635.group.tictactoe.logic.ComputerAI
+com.seis635.group.tictactoe.panel.JFrame <|-- com.seis635.group.tictactoe.panel.EndOptionPanel
+java.awt.event.ActionListener <|.. com.seis635.group.tictactoe.logic.GuestGame
+com.seis635.group.tictactoe.logic.Runnable <|.. com.seis635.group.tictactoe.logic.GuestGame
+com.seis635.group.tictactoe.view.JFrame <|-- com.seis635.group.tictactoe.view.UserLogin
+java.awt.event.ActionListener <|.. com.seis635.group.tictactoe.controller.GameController
+com.seis635.group.tictactoe.controller.Runnable <|.. com.seis635.group.tictactoe.controller.GameController
+javax.swing.JButton <|-- com.seis635.group.tictactoe.view.Cell
+com.seis635.group.tictactoe.panel.JFrame <|-- com.seis635.group.tictactoe.panel.PlayerInfoPanel
+com.seis635.group.tictactoe.view.JFrame <|-- com.seis635.group.tictactoe.view.Board
+@enduml
