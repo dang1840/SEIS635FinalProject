@@ -24,11 +24,7 @@ public class UserLogin extends JFrame {
     private JButton unMuteButton;
     private JPanel contentPane;
 
-
-
     private BackgroundMusic background = new BackgroundMusic();
-
-
 
     /**
      * Create the frame.
@@ -84,8 +80,8 @@ public class UserLogin extends JFrame {
                 String userName = textField.getText();
                 String password = passwordField.getText();
                 try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tic-tac-toe?"
-                            + "user=root&password=password");
+                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe?"
+                            + "user=admin&password=group8final");
 
                     PreparedStatement st = (PreparedStatement) connection
                             .prepareStatement("Select username, password from infotable where username=? and password=?");
@@ -132,11 +128,9 @@ public class UserLogin extends JFrame {
                 });
 
 
-
             }
 
         });
-
 
 
         contentPane.add(signUpButton);
