@@ -1,22 +1,17 @@
 package com.seis635.group.tictactoe.logic;
 
 import com.seis635.group.tictactoe.database.Database;
+import com.seis635.group.tictactoe.view.Board;
+import com.seis635.group.tictactoe.view.Cell;
 import com.seis635.group.tictactoe.panel.EndOptionPanel;
 import com.seis635.group.tictactoe.panel.PlayerInfoPanel;
 import com.seis635.group.tictactoe.player.Player;
-import com.seis635.group.tictactoe.view.Board;
-import com.seis635.group.tictactoe.view.Cell;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LocalGame implements ActionListener, Runnable{
-	private static final Logger LOGGER = LogManager.getLogger(LocalGame.class);
-
-
 	private Board board;
 	private EndOptionPanel endOptionPanel;
 	private Player player;
@@ -98,9 +93,9 @@ public class LocalGame implements ActionListener, Runnable{
 					waitForPlayerAction();
 					gameReset();
 				}
-				LOGGER.info("start to connect");
+				System.out.println("start to connect");
 				playerChoose();
-				LOGGER.info(player.getRole());
+				System.out.println(player.getRole());
 				
 				board.setMyMarker(player.getRole()+"");
 				board.setOpponentMarker(ai.getRole()+"");
@@ -145,8 +140,8 @@ public class LocalGame implements ActionListener, Runnable{
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);				JOptionPane.showMessageDialog(null, "Connection Lost!");
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Connection Lost!");
 				System.exit(2);
 			} 
 		}
@@ -162,7 +157,7 @@ LOGGER.error("Internal Error", e);				JOptionPane.showMessageDialog(null, "Conne
 			columnSelected = cellClicked.getColumn();
 			board.getStatus()[rowSelected][columnSelected] = cellClicked.getToken();
 			judger.Judge(board.getStatus());
-			LOGGER.info("cell"+ "("+cellClicked.getRow()+","+cellClicked.getColumn()+")"+ "clicked");
+			System.out.println("cell"+ "("+cellClicked.getRow()+","+cellClicked.getColumn()+")"+ "clicked");
 			waiting = false;
 			myTurn = false;
 		}
@@ -202,7 +197,7 @@ LOGGER.error("Internal Error", e);				JOptionPane.showMessageDialog(null, "Conne
 			myTurn = false;
 			ai.setRole('x');
 		}
-		LOGGER.info(e);
+		System.out.println(e);
 	}
 	public void aiTurn(){   
 		ai.putMarker(board.getCell(), board.getStatus());

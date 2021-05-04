@@ -1,13 +1,12 @@
 package com.seis635.group.tictactoe.database;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
-import javax.swing.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Database {
-	private static final Logger LOGGER = LogManager.getLogger(Database.class);
 
 	private static Statement statement;
 	private static Connection conn;
@@ -20,10 +19,11 @@ public class Database {
 			conn = DriverManager
 					.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe?"
 							+ "user=admin&password=group8final");
-			LOGGER.info("Succeeded connecting to the Database!");
+			System.out.println("Succeeded connecting to the Database!");
 		} catch (Exception e) {
-			LOGGER.info("Failed to the Database!");
-			JOptionPane.showMessageDialog(null, e.getCause());		}
+			System.out.println("Failed to the Database!");
+			e.printStackTrace();
+		}
 
 	}
 
@@ -35,14 +35,14 @@ public class Database {
 			statement = conn.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			if (resultSet.next() == false) {
-				LOGGER.info("Record does not exist");
+				System.out.println("Record does not exist");
 			}
 			id = resultSet.getInt("id");
 			return id;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);			LOGGER.info("failed to query");
+			e.printStackTrace();
+			System.out.print("failed to query");
 		}
 		return 0;
 	}
@@ -53,7 +53,7 @@ LOGGER.error("Internal Error", e);			LOGGER.info("failed to query");
 			statement = conn.createStatement();
 			ResultSet resultSet = statement.executeQuery(query);
 			if (resultSet.next() == false) {
-				LOGGER.info("Record does not exist");
+				System.out.println("Record does not exist");
 				//String update = "Insert into playerinfo (name, win, lose, tie) values (" + "'" + name + "'" + ",0,0,0)";
 				//statement.executeUpdate(update);
 				//resultSet = statement.executeQuery(query);
@@ -63,8 +63,8 @@ LOGGER.error("Internal Error", e);			LOGGER.info("failed to query");
 			return resultSet;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);			LOGGER.info("failed to query");
+			e.printStackTrace();
+			System.out.print("failed to query");
 		}
 		return null;
 	}
@@ -74,8 +74,8 @@ LOGGER.error("Internal Error", e);			LOGGER.info("failed to query");
 			return getRecord(id).getString("win");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);		}
+			e.printStackTrace();
+		}
 		return "XX";
 	}
 
@@ -84,8 +84,8 @@ LOGGER.error("Internal Error", e);		}
 			return getRecord(id).getString("lose");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);		}
+			e.printStackTrace();
+		}
 		return "XX";
 	}
 
@@ -94,8 +94,8 @@ LOGGER.error("Internal Error", e);		}
 			return getRecord(id).getString("tie");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);		}
+			e.printStackTrace();
+		}
 		return "XX";
 	}
 
@@ -105,11 +105,11 @@ LOGGER.error("Internal Error", e);		}
 		String update = "update infotable set win = " + num + " where id = " + id;
 		try {
 			statement.executeUpdate(update);
-			LOGGER.info("Record updated!");
+			System.out.println("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);		}
+			e.printStackTrace();
+		}
 	}
 
 	public void updateLoses(int id) {
@@ -118,11 +118,11 @@ LOGGER.error("Internal Error", e);		}
 		String update = "update infotable set lose = " + num + " where id= " + id;
 		try {
 			statement.executeUpdate(update);
-			LOGGER.info("Record updated!");
+			System.out.println("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);		}
+			e.printStackTrace();
+		}
 	}
 
 	public void updateTies(int id) {
@@ -131,10 +131,21 @@ LOGGER.error("Internal Error", e);		}
 		String update = "update infotable set tie = " + num + " where id =" + id;
 		try {
 			statement.executeUpdate(update);
-			LOGGER.info("Record updated!");
+			System.out.println("Record updated!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			 JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);		}
+			e.printStackTrace();
+		}
+	}
+
+	public void resetScore (int id) {
+		String update = "update infotable set win = 0, lose = 0, tie = 0 where id = " + id;
+		try {
+			statement.executeUpdate(update);
+			System.out.println("Record updated!");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

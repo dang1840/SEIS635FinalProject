@@ -1,18 +1,15 @@
 package com.seis635.group.tictactoe.logic;
 
+import com.seis635.group.tictactoe.controller.GameController;
 import com.seis635.group.tictactoe.database.Database;
 import com.seis635.group.tictactoe.panel.ModeChoosePanel;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GameStart implements Runnable {
-    private static final Logger LOGGER = LogManager.getLogger(GameStart.class);
 
     private static final int PVP_MODE = 1;
     private static final int PVE_MODE = 2;
@@ -69,12 +66,13 @@ public class GameStart implements Runnable {
         try {
             waitForPlayerAction();
             if (mode == PVP_MODE) {
+                new GameController();
             } else if (mode == PVE_MODE) {
                 new LocalGame(userID, playername);
             }
         } catch (InterruptedException e) {
-             JOptionPane.showMessageDialog(null,"Custom Displayed Error Message");
-LOGGER.error("Internal Error", e);        }
+            e.printStackTrace();
+        }
 
     }
 

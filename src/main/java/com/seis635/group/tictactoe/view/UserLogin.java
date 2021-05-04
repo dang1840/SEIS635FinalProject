@@ -2,8 +2,7 @@ package com.seis635.group.tictactoe.view;
 
 import com.seis635.group.tictactoe.logic.GameStart;
 import com.seis635.group.tictactoe.logic.GuestGame;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import com.seis635.group.tictactoe.music.BackgroundMusic;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -13,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class UserLogin extends JFrame {
-    private static final Logger LOGGER = LogManager.getLogger(UserLogin.class);
 
     private static final long serialVersionUID = 1L;
     private JTextField textField;
@@ -22,13 +20,22 @@ public class UserLogin extends JFrame {
     private JButton signUpButton;
     private JButton guestButton;
     private JButton quitButton;
-    private JLabel label;
+    private JButton muteButton;
+    private JButton unMuteButton;
     private JPanel contentPane;
+
+
+
+    private BackgroundMusic background = new BackgroundMusic();
+
+
 
     /**
      * Create the frame.
      */
     public UserLogin() {
+        background.playMusic();
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
         setResizable(false);
@@ -37,10 +44,10 @@ public class UserLogin extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Login");
+        JLabel lblNewLabel = new JLabel("TIC TAC TOE");
         lblNewLabel.setForeground(Color.BLACK);
         lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 46));
-        lblNewLabel.setBounds(450, 13, 273, 93);
+        lblNewLabel.setBounds(400, 13, 290, 93);
         contentPane.add(lblNewLabel);
 
         textField = new JTextField();
@@ -77,8 +84,8 @@ public class UserLogin extends JFrame {
                 String userName = textField.getText();
                 String password = passwordField.getText();
                 try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://database-1-group-8.civvwd6ongdl.us-east-1.rds.amazonaws.com:3306/tic-tac-toe?"
-                            + "user=admin&password=group8final");
+                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tic-tac-toe?"
+                            + "user=root&password=password");
 
                     PreparedStatement st = (PreparedStatement) connection
                             .prepareStatement("Select username, password from infotable where username=? and password=?");
@@ -96,8 +103,7 @@ public class UserLogin extends JFrame {
                         JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
                     }
                 } catch (SQLException sqlException) {
-                    JOptionPane.showMessageDialog(null, "Unable to connect to database to load user profile");
-                    LOGGER.error("Internal Error", sqlException);
+                    sqlException.printStackTrace();
                 }
             }
         });
@@ -113,20 +119,25 @@ public class UserLogin extends JFrame {
         signUpButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
+
                 EventQueue.invokeLater(new Runnable() {
                     public void run() {
                         try {
                             CreateNewUser frame = new CreateNewUser();
                             frame.setVisible(true);
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, e.getMessage());
-                            LOGGER.error(e);
+                            e.printStackTrace();
                         }
                     }
                 });
+
+
+
             }
 
         });
+
+
 
         contentPane.add(signUpButton);
 
@@ -142,8 +153,10 @@ public class UserLogin extends JFrame {
                 new GuestGame("Guest");
 
             }
+
         });
         contentPane.add(guestButton);
+
 
         /**
          Quit application
@@ -160,6 +173,44 @@ public class UserLogin extends JFrame {
         });
 
         contentPane.add(quitButton);
+
+        /**
+         Mute Music
+         */
+        muteButton = new JButton("MUTE");
+        muteButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        muteButton.setBounds(10, 10, 150, 73);
+        muteButton.setForeground(Color.BLUE);
+        muteButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                background.pause();
+                muteButton.setVisible(false);
+                unMuteButton.setVisible(true);
+            }
+        });
+
+        contentPane.add(muteButton);
+
+
+        /**
+         Unmute Music
+         */
+        unMuteButton = new JButton("UNMUTE");
+        unMuteButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        unMuteButton.setBounds(10, 10, 150, 73);
+        unMuteButton.setForeground(Color.BLUE);
+        unMuteButton.setVisible(false);
+        unMuteButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                background.resume();
+                unMuteButton.setVisible(false);
+                muteButton.setVisible(true);
+            }
+        });
+
+        contentPane.add(unMuteButton);
 
     }
 }
