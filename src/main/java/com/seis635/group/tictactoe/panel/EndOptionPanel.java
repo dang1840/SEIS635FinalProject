@@ -4,8 +4,6 @@ import com.seis635.group.tictactoe.database.Database;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 public class EndOptionPanel extends JFrame {
@@ -45,19 +43,9 @@ public class EndOptionPanel extends JFrame {
         rematchBtn.setFont(btnFont);
         closeBtn.setFont(btnFont);
 
-        closeBtn.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                // TODO Auto-generated method stub
-                db = new Database();
-                db.connect();
-                db.resetScore(1);
-                db.resetScore(3);
-                db.resetScore(4);
-
-                System.exit(0);
-            }
+        closeBtn.addActionListener(arg0 -> {
+            // TODO Auto-generated method stub
+            System.exit(0);
         });
     }
 
