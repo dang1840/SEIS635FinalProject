@@ -17,25 +17,32 @@
   
   . As a user, I would like the game to have Player Vs Enemy, so that I can play against the computer.
  
-  . As a user, I would like the game to have a login page, so that I can create my own game account.
+  . As a user, I would like the game to have a login page, so that I can create my own profile.
+  
+  . As a user, I would like tha game to have a login page, so that I can login my profile.
   
   . As a user, I would like the game to have a tracking board, so that I can know how many games I have played
   
-  . As a user, I want to be able to keep track of my wins
+  . As a user, I would like the game to track a tracking board, so that I can keep track of my wins and losses
   
-  . As a user, I want to be able to keep track of losses
+  . As a user, I want the game to have a rematch button, so that I can play the game multiple rounds.
   
-  . As a user, I want to be able to restart a game
+  . As a user, I want the game to have a guest mode, so that I can trial the game.
   
-  . As a user, I want to be able to type my name when logged in ass guest
+  . As a user, I want the game to have background music, so that I can listen while playing. 
   
-  . As a user, I want to be able to create a profile
+  . As a user, I want to able to mute the game music, so that I can play the game in silent.
   
-  . As a user, I want to be able to login to a profile
+  . As a user, I want the game to keep tracking the scores between me and my friend, so that I can know who is winning the game.
+  . As a user, I want the game to have an exit button, so that I can close the game.
   
-  . As a user, I want to be able to logout of my profile
+  . As a user, I want the game to show me the option to contnue playing or quit the game, so that I can continue to play or quit whenever I want to.
   
-  . As a user, I want to be able see number of games I have tied
- 
- . As a user, I want to be able to see a scoreboard
+  . As a user,
+  
+  . As a user, 
+  
+
+  
+
   
