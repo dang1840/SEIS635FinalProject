@@ -7,11 +7,9 @@
   Entry 2: Store Guest data (if later we dicide to keep Guest record)
   Entry 3,4: Store Player1 and Player2 data in PlayerVsPlayer mode
   
-2. The Player Vs Player not working correct yet. The code for Player Vs Player should go into GameController class
+2. Run code from TicTacToe class main
 
-3. Run code from TicTacToe class main
-
-4. User Stories:
+3. User Stories:
 
   . As a user, I would like the game to hava Player Vs Player mode, so that I can play the game with my friends.
   
