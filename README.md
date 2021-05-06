@@ -76,3 +76,8 @@ This is a Tic Tac Toe games using Java code based. We can play either with compu
 **6) Credit and Features Our Team Developed:**
 
 * This is an open source TicTacToe game, and our team have developed new features on top on this current project. Majority of our features we developed defined user stories above on this existing project as below: <br>
+
+**7) Screenshot Sample**
+
+
+![screenshot](TicTacToe_Screenshot.jpg)
