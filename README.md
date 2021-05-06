@@ -79,5 +79,6 @@ This is a Tic Tac Toe games using Java code based. We can play either with compu
 
 **7) Screenshot Sample**
 
+![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot.jpg)
 
-https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot.jpg
+
