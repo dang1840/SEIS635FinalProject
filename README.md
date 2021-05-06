@@ -3,7 +3,7 @@
 Group: 8 <br>
 Class: SEIS635 Final Project <br>
 Date: 05/07/2021 <br>
-Member Name: Dai Le, Dang Vu Quang, Ryan Poorman <br>
+Member Name: Dai Le, Dang Vu Quang Dang, Ryan Poorman <br>
 
 **1) A very quick summary of what your program does.**
 
