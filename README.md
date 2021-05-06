@@ -75,7 +75,7 @@ This is a Tic Tac Toe games using Java code based. We can play either with compu
 
 **6) Credit and Features Our Team Developed:**
 
-* This is an open source TicTacToe game, and our team have developed new features on top on this current project. Majority of our features we developed defined user stories above on this existing project as below: <br>
+* This is an open source [TicTacToe](https://github.com/sgd27/tic-tac-toe.git) game, and our team have developed new features on top on this current project. Majority of our features we developed defined user stories above on this existing project as below: <br>
 
 **7) Screenshot Sample**
 
@@ -83,6 +83,3 @@ This is a Tic Tac Toe games using Java code based. We can play either with compu
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot_1.jpg)
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot_2.jpg)
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot_3.jpg)
-
-
-
