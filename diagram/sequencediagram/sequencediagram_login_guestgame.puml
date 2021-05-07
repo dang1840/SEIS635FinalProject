@@ -1,0 +1,26 @@
+@startuml
+participant Actor
+Actor -> GuestGame : new
+activate GuestGame
+GuestGame -> Board : new
+activate Board
+Board -> Cell : new
+activate Cell
+Cell --> Board
+deactivate Cell
+Board --> GuestGame
+deactivate Board
+GuestGame -> EndOptionPanel : new
+activate EndOptionPanel
+EndOptionPanel -> EndOptionPanel : λ→
+activate EndOptionPanel
+EndOptionPanel --> EndOptionPanel
+deactivate EndOptionPanel
+EndOptionPanel --> GuestGame
+deactivate EndOptionPanel
+GuestGame -> ComputerAI : new
+activate ComputerAI
+ComputerAI --> GuestGame
+deactivate ComputerAI
+return
+@enduml

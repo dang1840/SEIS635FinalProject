@@ -1,0 +1,72 @@
+@startuml
+participant Actor
+Actor -> UserLogin : new
+activate UserLogin
+UserLogin -> BackgroundMusic : playMusic
+activate BackgroundMusic
+BackgroundMusic --> UserLogin
+deactivate BackgroundMusic
+BackgroundMusic -> GameStart : new
+activate GameStart
+GameStart -> ModeChoosePanel : new
+activate ModeChoosePanel
+ModeChoosePanel --> GameStart
+deactivate ModeChoosePanel
+GameStart -> Database : connect
+activate Database
+Database --> GameStart
+deactivate Database
+GameStart -> Database : getUserID
+activate Database
+Database --> GameStart
+deactivate Database
+GameStart -> Database : getRecord
+activate Database
+Database --> GameStart
+deactivate Database
+GameStart -> ModeChoosePanel : addName
+activate ModeChoosePanel
+ModeChoosePanel --> GameStart
+deactivate ModeChoosePanel
+GameStart -> Database : getWins
+activate Database
+Database -> Database : getRecord
+activate Database
+Database --> Database
+deactivate Database
+Database --> GameStart
+deactivate Database
+GameStart -> ModeChoosePanel : addWins
+activate ModeChoosePanel
+ModeChoosePanel --> GameStart
+deactivate ModeChoosePanel
+GameStart -> Database : getLoses
+activate Database
+Database -> Database : getRecord
+activate Database
+Database --> Database
+deactivate Database
+Database --> GameStart
+deactivate Database
+GameStart -> ModeChoosePanel : addLoses
+activate ModeChoosePanel
+ModeChoosePanel --> GameStart
+deactivate ModeChoosePanel
+GameStart -> Database : getTies
+activate Database
+Database -> Database : getRecord
+activate Database
+Database --> Database
+deactivate Database
+Database --> GameStart
+deactivate Database
+GameStart -> ModeChoosePanel : addTies
+activate ModeChoosePanel
+ModeChoosePanel --> GameStart
+deactivate ModeChoosePanel
+GameStart --> ModeChoosePanel
+deactivate GameStart
+GameStart --> UserLogin
+deactivate GameStart
+return
+@enduml
