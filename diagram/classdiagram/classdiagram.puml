@@ -210,27 +210,27 @@ class com.seis635.group.tictactoe.logic.Judger {
 + void setWinner(char)
 }
 
-com.seis635.group.tictactoe.TicTacToe --|> com.seis635.group.tictactoe.view.UserLogin
-com.seis635.group.tictactoe.view.UserLogin --|> com.seis635.group.tictactoe.music.BackgroundMusic
-com.seis635.group.tictactoe.view.UserLogin --|> com.seis635.group.tictactoe.logic.GuestGame
-com.seis635.group.tictactoe.view.UserLogin --|> com.seis635.group.tictactoe.logic.GameStart
-com.seis635.group.tictactoe.view.UserLogin --|> com.seis635.group.tictactoe.view.CreateNewUser
-com.seis635.group.tictactoe.logic.GuestGame --|> com.seis635.group.tictactoe.view.Board
-com.seis635.group.tictactoe.logic.GuestGame --|> com.seis635.group.tictactoe.view.Cell
-com.seis635.group.tictactoe.logic.GuestGame --|> com.seis635.group.tictactoe.panel.EndOptionPanel
-com.seis635.group.tictactoe.logic.GuestGame --|> com.seis635.group.tictactoe.player.Player
-com.seis635.group.tictactoe.logic.GameStart --|> com.seis635.group.tictactoe.controller.GameController
-com.seis635.group.tictactoe.logic.GameStart --|> com.seis635.group.tictactoe.database.Database
-com.seis635.group.tictactoe.logic.GameStart --|> com.seis635.group.tictactoe.panel.ModeChoosePanel
-com.seis635.group.tictactoe.logic.LocalGame --|> com.seis635.group.tictactoe.player.Player
-com.seis635.group.tictactoe.controller.GameController --|> com.seis635.group.tictactoe.database.Database
-com.seis635.group.tictactoe.controller.GameController --|> com.seis635.group.tictactoe.logic.Judger
-com.seis635.group.tictactoe.controller.GameController --|> com.seis635.group.tictactoe.panel.EndOptionPanel
-com.seis635.group.tictactoe.controller.GameController --|> com.seis635.group.tictactoe.panel.PlayerInfoPanel
-com.seis635.group.tictactoe.controller.GameController --|> com.seis635.group.tictactoe.player.Player
-com.seis635.group.tictactoe.controller.GameController --|> com.seis635.group.tictactoe.player.Player2
+com.seis635.group.tictactoe.TicTacToe --> com.seis635.group.tictactoe.view.UserLogin
+com.seis635.group.tictactoe.view.UserLogin --> com.seis635.group.tictactoe.music.BackgroundMusic
+com.seis635.group.tictactoe.view.UserLogin --> com.seis635.group.tictactoe.logic.GuestGame
+com.seis635.group.tictactoe.view.UserLogin --> com.seis635.group.tictactoe.logic.GameStart
+com.seis635.group.tictactoe.view.UserLogin --> com.seis635.group.tictactoe.view.CreateNewUser
+com.seis635.group.tictactoe.logic.GuestGame --> com.seis635.group.tictactoe.view.Board
+com.seis635.group.tictactoe.logic.GuestGame --> com.seis635.group.tictactoe.view.Cell
+com.seis635.group.tictactoe.logic.GuestGame --> com.seis635.group.tictactoe.panel.EndOptionPanel
+com.seis635.group.tictactoe.logic.GuestGame --> com.seis635.group.tictactoe.player.Player
+com.seis635.group.tictactoe.logic.GameStart --> com.seis635.group.tictactoe.controller.GameController
+com.seis635.group.tictactoe.logic.GameStart --> com.seis635.group.tictactoe.database.Database
+com.seis635.group.tictactoe.logic.GameStart --> com.seis635.group.tictactoe.panel.ModeChoosePanel
+com.seis635.group.tictactoe.logic.LocalGame --> com.seis635.group.tictactoe.player.Player
+com.seis635.group.tictactoe.controller.GameController --> com.seis635.group.tictactoe.database.Database
+com.seis635.group.tictactoe.controller.GameController --> com.seis635.group.tictactoe.logic.Judger
+com.seis635.group.tictactoe.controller.GameController --> com.seis635.group.tictactoe.panel.EndOptionPanel
+com.seis635.group.tictactoe.controller.GameController --> com.seis635.group.tictactoe.panel.PlayerInfoPanel
+com.seis635.group.tictactoe.controller.GameController --> com.seis635.group.tictactoe.player.Player
+com.seis635.group.tictactoe.controller.GameController --> com.seis635.group.tictactoe.player.Player2
 com.seis635.group.tictactoe.player.Player --|> com.seis635.group.tictactoe.view.Contestant
-com.seis635.group.tictactoe.player.Player --|> com.seis635.group.tictactoe.view.Marker
+com.seis635.group.tictactoe.player.Player --> com.seis635.group.tictactoe.view.Marker
 com.seis635.group.tictactoe.player.Player2 --|> com.seis635.group.tictactoe.view.Contestant
 com.seis635.group.tictactoe.logic.ComputerAI --|> com.seis635.group.tictactoe.view.Contestant
 @enduml
