@@ -9,6 +9,8 @@ Member Name: Dai Le, Dang Vu Quang Dang, Ryan Poorman <br>
 
 This is a Tic Tac Toe games using Java code based. We can play either with computer or with other players.
 
+Note: **Class Diagram** and **Sequence Diagram** locates in folder **diagram**
+
 **2) Special instructions, if any, for building your project. (If not, say none)**
 
 * Before running the Tic Tac Toe will need to add on lib either from java source or from maven repo:
