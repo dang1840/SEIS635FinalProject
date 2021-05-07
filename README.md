@@ -83,3 +83,11 @@ This is a Tic Tac Toe games using Java code based. We can play either with compu
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot_1.jpg)
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot_2.jpg)
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot_3.jpg)
+
+**8) Future Improvement Possible**
+
+* Fixing some bugs 
+* Adding features for guest mode > player to player
+* Combined all database table into for easier managing 
+* Refactor and Clean up Code more, so that it can easier to maintenance and readable
+* Adding more Junit Test coverage.
