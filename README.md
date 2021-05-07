@@ -24,11 +24,9 @@ Note: **Class Diagram** and **Sequence Diagram** locates in folder **diagram**
     * Main **Java Code should be under** SEIS635FinalProject > src > main > java ...
     * The **Junit Test Code should be under** > test > java ...
 
-**4) Program operation.  Describe what I need to do to run the program.**
+**4) Program operation. Describe what I need to do to run the program.**
 
-* Assume all special instructions already setup correctly,
-  from SEIS635FinalProject > src > main > java com.seis635.group.tictactoe > Click on **TicTacToe** and compile/run this file.
-
+* Assume all special instructions already setup correctly, from SEIS635FinalProject > src > main > java com.seis635.group.tictactoe > Click on **TicTacToe** and compile/run this file.
 
 **5) Supplement information purpose is below:**
 
@@ -81,6 +79,7 @@ Note: **Class Diagram** and **Sequence Diagram** locates in folder **diagram**
 
 **7) Screenshot Sample**
 
+![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/diagram/highlevelarch/TicTacToe_Diagram.jpeg)
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot.jpg)
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot_1.jpg)
 ![alt text](https://github.com/dang1840/SEIS635FinalProject/blob/main/screenshot/TicTacToe_Screenshot_2.jpg)
@@ -93,3 +92,4 @@ Note: **Class Diagram** and **Sequence Diagram** locates in folder **diagram**
 * Combined all database table into for easier managing 
 * Refactor and Clean up Code more, so that it can easier to maintenance and readable
 * Adding more Junit Test coverage.
+* Run directly jar in folder Deliverables and include additional dependencies such as mysql, log4j for solution simply: Click and Run Program without compiling the code:
